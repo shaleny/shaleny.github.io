@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Button Watch</title>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+body {
+	background: rgba(212,228,239,1);
+	background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+	background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+	background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+	background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+	background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+}
+
+header {
+	width: 980px;
+	margin: 0 auto;
+}
+
+.main-header, .plugin__header, .instructions__header {
+	margin: 50px;
+	text-align: center;
+}
+
+.about-me, .about-my-plugin__text, .instructions__text{
+	margin: 10px 0;
+	line-height: 26px;
+	font-size: 17px;
+}
+
+.about-me--list {
+	list-style-position: inside;
+}
+
+.about-my-plugin, .instructions {
+	margin: 50px auto;
+	width: 980px;
+}
+
+.about-my-plugin__text--show-up {
+	color: brown;
+}
+
+.homer-box {
+	position: relative;
+	width: 980px;
+	height: 220px;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-radius: 8px;
+	background: rgba(210,255,82,1);
+	background: -moz-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+	background: -webkit-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -o-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -ms-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: linear-gradient(to right, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1 );
+}
+
+.homer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 90px;
+	height: 130px;
+	background-image: url(homer-looks-right.png);
+	-webkit-transition: bottom 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition:         bottom 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.homer--walks-to-right {
+	background-image: url(homer-walks-to-right.gif);
+}
+
+.homer--looks-left {
+	background-image: url(homer-looks-left.png);	
+}
+
+.homer--walks-to-left {
+	background-image: url(homer-walks-to-left.gif);
+}
+
+.homer--jumps {
+	bottom: 40px;
+}
+
+.homer-on-the-top {
+	bottom: 220px;
+}
+
+.about-my-plugin__input {
+	margin: 15px 0;
+	padding: 0 0 0 15px;
+	width: 965px;
+	height: 26px;
+}
+
+.about-my-plugin__text--margin {
+	margin-top: 50px;
+}
+
+.about-my-plugin__text--hidden-block {
+	display: none;
+	color: brown;
+}
+
+.instructions__code {
+	display: block;
+	margin: 25px 0 25px 35px;
+	padding: 30px;
+	border-radius: 8px;
+	background: grey;
+	color: white;
+}
+
+footer {
+	margin: 80px auto 0;
+	padding: 30px;
+	width: 920px;
+}
+
+.footer-data {
+	display: inline-block;
+	margin-right: 35px;
+}
+
+.footer-data__header {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.footer-data__text {
+	font-size: 16px;
+	font-weight: normal;
+}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script>
+(function() {
+
+  this.buttonWatch = this.bw = {
+
+    turnOn: function() {
+        document.addEventListener('keydown', this._downResponse);
+        document.addEventListener('keyup', this._upResponse);
+        document.addEventListener('keypress', this._pressResponse);
+    },
+
+    turnOff: function() {
+        document.removeEventListener('keydown', this._downResponse);
+        document.removeEventListener('keyup', this._upResponse);
+        document.removeEventListener('keypress', this._pressResponse);
+    },
+
+    _onDownAction: {},
+    _onUpAction: {},
+    _onPressAction: {},
+    _comboAction: [],
+    _onSequenceComboAction: [],
+    _onWriteAction: [],
+    _isPressedNow: [],
+    _lastPressed: [],
+    _lastWrite: [],
+
+    _downResponse: function(event) {
+        var self = buttonWatch;
+        var code = event.keyCode;
+        var index = self._isPressedNow.indexOf(code);
+
+        if (index == -1) {
+          self._isPressedNow.push(code);
+        }
+
+        if (self._lastPressed.length > 12) {
+          self._lastPressed.shift();
+        }
+        self._lastPressed.push(code);
+
+        self._doEventAction('_onDownAction', event, code);
+        self._doComboAction(event);
+        self._doSequenceOfEventsAction('_onSequenceComboAction', event, '_lastPressed');
+    },
+
+    _upResponse: function(event) {
+        var self = buttonWatch;
+        var code = event.keyCode;
+        var index = self._isPressedNow.indexOf(code);
+
+        if (index != -1) {
+          self._isPressedNow.splice(index, 1);
+        }
+        self._doEventAction('_onUpAction', event, code);
+    },
+
+    _pressResponse: function(event) {
+        var self = buttonWatch;
+        var code = self._getChar(event);
+
+        if (self._lastWrite.length > 12) {
+          self._lastWrite.shift();
+        }
+        self._lastWrite.push(code);
+
+        self._doEventAction('_onPressAction', event, code);
+        self._doSequenceOfEventsAction('_onWriteAction', event, '_lastWrite');
+    },
+
+    _doEventAction: function(eventType, event, code) {
+        var self = this;
+        for (var key in self[eventType]) {
+          if (key == code) {
+            self[eventType][code](event);
+          }
+        }
+    },
+
+    _doComboAction: function(event) {
+        var self = this;
+        var event = event;
+
+        self._comboAction.forEach(function(obj) {
+          var match = self._compareArrays(obj.combo, self._isPressedNow);
+          if (match) {
+            self._isPressedNow = [];
+            obj.action(event);
+          }
+        });
+    },
+
+    _doSequenceOfEventsAction: function(sequenceType, event, listLast) {
+        var self = this;
+        var event = event;
+
+        self[sequenceType].forEach(function(obj) {
+          var cuttingLength = -obj.combination.length;
+          var last = self[listLast].slice(cuttingLength);
+          var match = self._sequentialCompareArrays(obj.combination, last);
+          if (match) {
+            obj.action(event);
+          }
+        });
+    },
+
+    down: function(buttons, action) {
+        this._keyAction('_onDownAction', buttons, action);
+    },
+
+    up: function(buttons, action) {
+        this._keyAction('_onUpAction', buttons, action);
+    },
+
+    press: function(buttons, action) {
+        this._keyAction('_onPressAction', buttons, action);
+    },
+
+    _keyAction: function(eventType, buttons, action) {
+        var codes;
+        if (eventType != '_onPressAction') {
+          codes = this._findCode(buttons);
+        } else {
+          codes = buttons;
+        }
+
+        if (action) {
+          this._setKeyAction(eventType, codes, action);
+        } else {
+          this._delKeyAction(eventType, codes);
+        }
+    },
+
+    _setKeyAction: function(eventType, buttons, action) {
+        var self = this;
+        buttons.forEach(function(button) {
+
+          if (Array.isArray(button)) {
+            button.forEach(function(x) {
+              self[eventType][x] = action;
+            });
+          } else {
+            self[eventType][button] = action;
+          }
+        });
+    },
+
+    _delKeyAction: function(eventType, buttons) {
+        var self = this;
+        buttons.forEach(function(button) {
+
+          if (Array.isArray(button)) {
+            button.forEach(function(x) {
+              delete self[eventType][x];
+            });
+          } else {
+            delete self[eventType][button];
+          }
+
+        });
+    },
+
+    combo: function(buttons, action) {
+        var combo = this._findCode(buttons);
+
+        if (action) {
+          this._setComboAction(combo, action);
+        } else {
+          this._delComboAction(combo);
+        }
+    },
+
+    _setComboAction: function(combo, action) {
+        this._comboAction.push({
+          'combo': combo,
+          'action': action
+        });
+    },
+
+    _delComboAction: function(combo) {
+        var self = this;
+        var settedCombo;
+        var match;
+        for (var i = 0; i < self._comboAction.length; i++) {
+          settedCombo = self._comboAction[i].combo;
+          match = self._compareArrays(settedCombo, combo);
+
+          if (match) {
+            self._comboAction.splice(i, 1);
+            break;
+          }
+        }
+    },
+
+    sequenceCombo: function(buttons, action) {
+        this._sequenceOfEventsAction('_onSequenceComboAction', buttons, action);
+    },
+
+    write: function(text, action) {
+        var buttons = text.split('');
+        this._sequenceOfEventsAction('_onWriteAction', buttons, action);
+    },
+
+    _sequenceOfEventsAction: function(eventType, buttons, action) {
+        var combination;
+        if (eventType != '_onWriteAction') {
+          combination = this._findCode(buttons);
+        } else {
+          combination = buttons;
+        }
+
+        if (action) {
+          this._setSequenceOfEventsAction(eventType, combination, action);
+        } else {
+          this._delSequenceOfEventsAction(eventType, combination);
+        }
+    },
+
+    _setSequenceOfEventsAction: function(eventType, combination, action) {
+        this[eventType].push({
+          'combination': combination,
+          'action': action
+        });
+    },
+
+    _delSequenceOfEventsAction: function(eventType, combination) {
+        var self = this;
+        var settedCombination;
+        var match;
+
+        for (var i = 0; i < self[eventType].length; i++) {
+          settedCombination = self[eventType][i].combination;
+          match = self._sequentialCompareArrays(settedCombination, combination);
+
+          if (match) {
+            self[eventType].splice(i, 1);
+            break;
+          }
+        }
+    },
+
+    _findCode: function(buttons) {
+        var self = this;
+        return buttons.map(function(button) {
+          if (typeof button === 'string') {
+            return self._keyCodes[button];
+          } else {
+            return button;
+          }
+        });
+    },
+
+    _getChar: function(event) {
+        if (event.which == null) {
+          if (event.keyCode < 32) return null;
+          return String.fromCharCode(event.keyCode)
+        }
+
+        if (event.which != 0 && event.charCode != 0) {
+          if (event.which < 32) return null;
+          return String.fromCharCode(event.which);
+        }
+
+        return null;
+    },
+
+    _compareArrays: function(local, visitant) {
+        if (local.length != visitant.length) return false;
+        
+        var mergedVisitant = [].concat.apply([], visitant);
+
+        return local.every(function(elem) {
+          if (Array.isArray(elem)) {
+            return elem.some(function(x) {
+              return (mergedVisitant.indexOf(x) != -1);
+            })
+          }
+
+          return (mergedVisitant.indexOf(elem) != -1);
+        });
+    },
+
+    _sequentialCompareArrays: function(local, visitant) {
+        if (local.length != visitant.length) return false;
+
+        return local.every(function(elem, i) {
+          var visitantElem = visitant[i];
+          var elemIsArray = Array.isArray(elem);
+          var visitantElemIsArray = Array.isArray(visitantElem);
+
+          if (elemIsArray && visitantElemIsArray) {
+              return elem.toString() === visitantElem.toString();
+
+          } else if (elemIsArray || visitantElemIsArray) {
+              var match;
+
+              if (elemIsArray) {
+                match = elem.indexOf(visitantElem);
+              } else {
+                match = visitantElem.indexOf(elem);
+              }
+              return match != -1;
+
+          } else {
+              return elem === visitantElem;
+          }
+        });
+    },
+
+    _keyCodes: {
+        'backspace': 8,
+        'tab': 9,
+        'enter': 13,
+        'shift': 16,
+        'ctrl': [17, 57392],
+        'alt': [18, 225],
+        'pause': 19,
+        'caps': 20,
+        'esc': 27,
+        'space': 32,
+        'pageup': 33,
+        'pagedown': 34,
+        'end': 35,
+        'home': 36,
+        'left': 37,
+        'up': 38,
+        'right': 39,
+        'down': 40,
+        'print': [44, 124],
+        'insert': 45,
+        'delete': 46,
+        '0': 48,
+        '1': 49,
+        '2': 50,
+        '3': 51,
+        '4': 52,
+        '5': 53,
+        '6': 54,
+        '7': 55,
+        '8': 56,
+        '9': 57,
+        'a': 65,
+        'b': 66,
+        'c': 67,
+        'd': 68,
+        'e': 69,
+        'f': 70,
+        'g': 71,
+        'h': 72,
+        'i': 73,
+        'j': 74,
+        'k': 75,
+        'l': 76,
+        'm': 77,
+        'n': 78,
+        'o': 79,
+        'p': 80,
+        'q': 81,
+        'r': 82,
+        's': 83,
+        't': 84,
+        'u': 85,
+        'v': 86,
+        'w': 87,
+        'x': 88,
+        'y': 89,
+        'z': 90,
+        'cmd': [91, 92, 93, 224],
+        'num_0': 96,
+        'num_1': 97,
+        'num_2': 98,
+        'num_3': 99,
+        'num_4': 100,
+        'num_5': 101,
+        'num_6': 102,
+        'num_7': 103,
+        'num_8': 104,
+        'num_9': 105,
+        'num_multiply': 106,
+        'num_add': 107,
+        'num_enter': 108,
+        'num_subtract': 109,
+        'num_decimal': 110,
+        'num_divide': 111,
+        'f1': 112,
+        'f2': 113,
+        'f3': 114,
+        'f4': 115,
+        'f5': 116,
+        'f6': 117,
+        'f7': 118,
+        'f8': 119,
+        'f9': 120,
+        'f10': 121,
+        'f11': 122,
+        'f12': 123,
+        'num': [12, 144, 63289],
+        'scroll': 145,
+        ';': [59, 186],
+        '=': [61, 187],
+        ',': 188,
+        '-': [173, 189],
+        '.': 190,
+        '/': 191,
+        '`': 192,
+        '[': 219,
+        '\\': [0, 220],
+        ']': 221,
+        '\'': 222,
+        '`': 223,
+        '?': 191,
+        '>': 190,
+        '<': 188,
+        '\"': 222,
+        ':': [59, 186],
+        '{': 219,
+        '}': 221,
+        '|': [0, 220],
+        '~': 192,
+        '+': [61, 187],
+        '_': [173, 189],
+        '!': 49,
+        '@': 50,
+        '#': 51,
+        '$': 52,
+        '%': 53,
+        '^': 54,
+        '&': 55,
+        '*': 56,
+        '(': 57,
+        ')': 48,
+        'escape': 27,
+        'control': [17, 57392],
+        'command': [91, 92, 93, 224],
+        'break': 19,
+        'windows': [91, 92, 93, 224],
+        'option': [18, 225],
+        'caps_lock': 20,
+        'apostrophe': 222,
+        'semicolon': [59, 186],
+        'tilde': 192,
+        'accent': 223,
+        'scroll_lock': 145,
+        'num_lock': [12, 144, 63289],
+        'metaKey': [91, 92, 93, 224],
+        'ctrlKey': [17, 57392],
+        'shiftKey': 16,
+        'altKey': [18, 225]
+    }
+  }
+})();
+jQuery(function() {
+  var $homer = $('.homer');
+  var walkRightInterval;
+  var walkRightSensor = false;
+  var walkLeftInterval;
+  var walkLeftSensor = false;
+  bw.turnOn();
+  
+  bw.down(['right'], function() {
+    $homer.removeClass('homer--looks-left')
+          .removeClass('homer--walks-to-left')
+          .addClass('homer--walks-to-right');
+
+    if (walkRightSensor) return;
+
+    walkRightSensor = true;
+    walkRightInterval = setInterval(function() {
+      if (parseFloat($homer.css('left')) > 886) return;
+      $homer.css('left', function(i, value) {return parseFloat(value) + 4; });
+    }, 20)
+  });
+
+  bw.up(['right'], function() {
+    clearInterval(walkRightInterval);
+    walkRightSensor = false;
+    $homer.removeClass('homer--walks-to-right');
+  });
+
+
+  bw.down(['left'], function() {
+    $homer.addClass('homer--looks-left')
+          .addClass('homer--walks-to-left');
+
+    if (walkLeftSensor) return;
+
+    walkLeftSensor = true;
+    walkLeftInterval = setInterval(function() {
+      if (parseFloat($homer.css('left')) < 4) return;
+      $homer.css('left', function(i, value) {return parseFloat(value) - 4; });
+    }, 20)
+  });
+
+  bw.up(['left'], function() {
+    clearInterval(walkLeftInterval);
+    walkLeftSensor = false;
+    $homer.removeClass('homer--walks-to-left');
+  });
+
+  bw.down(['ctrl'], function() {
+    var homerWalks = $homer.hasClass('homer--walks-to-left') || $homer.hasClass('homer--walks-to-right');
+    if (!homerWalks) {
+      if ($homer.hasClass('homer--looks-left')) {
+        $homer.addClass('homer--walks-to-left');
+      } else {
+        $homer.addClass('homer--walks-to-right');
+      }
+    }
+
+    $homer.addClass('homer--jumps');
+    setTimeout(function() {
+      $homer.removeClass('homer--jumps');
+      if (!homerWalks) {
+        $homer.removeClass('homer--walks-to-right')
+              .removeClass('homer--walks-to-left');
+      }
+    }, 400)
+  });
+
+  bw.combo(['j', 'k', 'l'], function() {
+    $homer.toggleClass('homer-on-the-top');
+
+    if ($homer.hasClass('homer--looks-left')) {
+      $homer.addClass('homer--walks-to-left');
+    } else {
+      $homer.addClass('homer--walks-to-right');
+    }
+
+    setTimeout(function() {
+        $homer.removeClass('homer--walks-to-right')
+              .removeClass('homer--walks-to-left');
+    }, 400)
+  });
+
+  bw.write('jQuery', function() {
+    var $hiddenBlock = $('.about-my-plugin__text--hidden-block');
+    $hiddenBlock.show();
+    setTimeout(function() {
+      $hiddenBlock.hide();
+    }, 1000);
+  });
+});
+	</script>
+</head>
+<body>
+<header>
+	<h1 class="main-header">Hello!</h1>
+	<p class="about-me">My name is Roman Semenko. I'm new in frontend. I have knew and learned frontend on frontend courses «WinnerOS» by <a class="about-me__link" href="http://goit.ua/">GoIt</a>.</p>
+	<ul class="about-me about-me--list">I have no working experience... But I can show you my training works! There are in the repositories:
+		<li class="about-me__item">
+			<a href="https://github.com/shaggy8/js_hw_13-14" class="about-me__link">Little crazy test</a>
+		</li>
+		<li class="about-me__item">
+			<a href="https://github.com/shaggy8/js_hw_19-20" class="about-me__link">Developed model of a webpage with some animation</a>
+		</li>
+		<li class="about-me__item">
+			<a href="https://github.com/shaggy8/Ekzamen2" class="about-me__link">Responsive model of a webpage with some plugins and AJAX</a>
+			<br>
+			<a href="http://shaggy8.github.io/" class="about-me__link">Here is an example</a> (put text in input of «Discover holiday activity ideas» section and submit. It will request pictures on your choice).
+		</li>
+	</ul>
+</header>
+<div class="about-my-plugin">
+	<h2 class="plugin__header">Button Watch</h2>
+	<p class="about-my-plugin__text">Like test work i wrote little plugin. It responds on keyboard events. Let I show you...</p>
+	<p class="about-my-plugin__text--show-up">Push 'right' button for instruction to Homer to move right, or push 'left' button and Homer will walks left. When you push 'ctrl' button Homer will jump.</p>
+	<div class="homer-box">
+		<div class="homer"></div>
+	</div>
+	<p class="about-my-plugin__text--show-up">When you will press 'j', 'k' and 'l' buttons at one time Homer will jump up on the roof. Repeat this action and Homer will come back in his box.</p>
+	<p class="about-my-plugin__text about-my-plugin__text--margin">Let's leave Homer and test one more possibility of the my plugin. Write the word 'jQuery' (including proper capitalization) to see it in action.</p>
+	<p class="about-my-plugin__text about-my-plugin__text--hidden-block">I love jQuery!!!</p>
+	<input type="text" class="about-my-plugin__input" placeholder="You can use this input for keyboard events test">
+	<p class="about-my-plugin__text">For know more about the plugin read instructions.</p>
+</div>
+<div class="instructions">
+	<h2 class="instructions__header">Instructions</h2>
+	<p class="instructions__text">Button Watch is a simple plugin without the dependencies that watching on the keyboard events and responds your setted behavior.</p>
+	<p class="instructions__text">The object of the plugin has two names «buttonWatch» and short variant «bw».</p>
+	<p class="instructions__text">For plugin initialization enter code</p>
+	<code class="instructions__code">buttonWatch.turnOn();</code>
+	<p class="instructions__text">For "turning off"</p>
+	<code class="instructions__code">buttonWatch.turnOff();</code>
+	<h4 class="instructions__header">Setting behavior for reaction to keyboard events</h4>
+	<p class="instructions__text">To set the behavior on keydown</p>
+	<code class="instructions__code">buttonWatch.down(buttons, function);</code>
+	<p class="instructions__text">To set the behavior on keyup</p>
+	<code class="instructions__code">buttonWatch.up(buttons, function);</code>
+	<p class="instructions__text">To set the behavior on keypress</p>
+	<code class="instructions__code">buttonWatch.press(symbols, function);</code>
+	<p class="instructions__text">To set the behavior on pressing at one time a few buttons</p>
+	<code class="instructions__code">buttonWatch.combo(buttons, function);</code>
+	<p class="instructions__text">To set the behavior on sequence of pressing a few buttons. Limited to 13 characters.</p>
+	<code class="instructions__code">buttonWatch.sequenceCombo(buttons, function);</code>
+	<p class="instructions__text">To set the behavior on typing text string. Limited to 13 characters.</p>
+	<code class="instructions__code">buttonWatch.write(text, function);</code>
+	<p class="instructions__text"><strong>buttons</strong> - an array of button names or keyCode.</p>
+	<p class="instructions__text">In the array can be specified as the name of the buttons (string), and their keyCode (number). The names of the buttons are only available in English layout in lowercase.</p>
+	<p class="instructions__text">For example</p>
+	<code class="instructions__code">buttonWatch.down(['r', 'o', 70, 13] function() {console.log('Hi there!')});</code>
+	<p class="instructions__text"><strong>symbols</strong> - an array of symbols.</p>
+	<p class="instructions__text">Array elements can be any character that can be entered from the keyboard.</p>
+	<p class="instructions__text"><strong>Pay attention!</strong> The following commands are not identical.</p>
+	<code class="instructions__code">
+	buttonWatch.press(['q'] function() {console.log('Hi there!')});
+	<br>
+	buttonWatch.press(['Q'] function() {console.log('Hi there!')});
+	<br>
+	buttonWatch.press(['й'] function() {console.log('Hi there!')});
+	</code>
+	<p class="instructions__text"><strong>text</strong> - a text string.</p>
+	<p class="instructions__text">It may contain any characters that can be entered from the keyboard.</p>
+	<p class="instructions__text"><strong>function</strong> - function, which performance is set for reaction on event.</p>
+	<p class="instructions__text">If the function is not specified, the behavior for «buttons» and «symbols» items will be deleted!</p>
+	<p class="instructions__text">
+		<a href="http://dmauro.github.io/Keypress/">Virtual keyboard</a> and 
+		<a href="https://learn.javascript.ru/keyboard-events#keyboard-test-stand">Test stand</a> where you can find keyCode of keyboard-events.</p>
+	<hr>
+	<h2 class="instructions__header">Інструкції до плагіну</h2>
+	<p class="instructions__text">Простий плагін без залежностей, що стежить за подіями клавіатури і реагує на них заданою вами поведінкою.</p>
+	<p class="instructions__text">Об'єкт плагіна має два імені «buttonWatch» і короткий варіант «bw».</p>
+	<p class="instructions__text">Для ініціалізації плагіну ввести код</p>
+	<code class="instructions__code">buttonWatch.turnOn();</code>
+	<p class="instructions__text">Щоб його "вимкнути"</p>
+	<code class="instructions__code">buttonWatch.turnOff();</code>
+	<h4 class="instructions__header">Встановлення поведінки для реакції на події клавіатури</h4>
+	<p class="instructions__text">Для встановлення поведінки на keydown</p>
+	<code class="instructions__code">buttonWatch.down(buttons, function);</code>
+	<p class="instructions__text">Для встановлення поведінки на keyup</p>
+	<code class="instructions__code">buttonWatch.up(buttons, function);</code>
+	<p class="instructions__text">Для встановлення поведінки на keypress</p>
+	<code class="instructions__code">buttonWatch.press(symbols, function);</code>
+	<p class="instructions__text">Для встановлення поведінки на одночасне натиснення декількох кнопок</p>
+	<code class="instructions__code">buttonWatch.combo(buttons, function);</code>
+	<p class="instructions__text">Для встановлення поведінки на послідовність натискань декількох кнопок. Обмежено 13 символами.</p>
+	<code class="instructions__code">buttonWatch.sequenceCombo(buttons, function);</code>
+	<p class="instructions__text">Для встановлення поведінки на введення текстової стрічки. Обмежено 13 символами.</p>
+	<code class="instructions__code">buttonWatch.write(text, function);</code>
+	<p class="instructions__text"><strong>buttons</strong> - масив назв кнопок або їх keyCode.</p>
+	<p class="instructions__text">У масиві можуть бути вказані як назви кнопок (string), так і їх keyCode (number). Назви кнопок задаються тільки у англійській розкладці у нижньому реєстрі.</p>
+	<p class="instructions__text">Наприклад</p>
+	<code class="instructions__code">buttonWatch.down(['r', 'o', 70, 13] function() {console.log('Hi there!')});</code>
+	<p class="instructions__text"><strong>symbols</strong> - масив символів.</p>
+	<p class="instructions__text">Елементом масива може бути будь який символ, який можна ввести з клавіатури.</p>
+	<p class="instructions__text"><strong>Зверніть увагу!</strong> Наступні команди не є ідентичними.</p>
+	<code class="instructions__code">
+	buttonWatch.press(['q'] function() {console.log('Hi there!')});
+	<br>
+	buttonWatch.press(['Q'] function() {console.log('Hi there!')});
+	<br>
+	buttonWatch.press(['й'] function() {console.log('Hi there!')});
+	</code>
+	<p class="instructions__text"><strong>text</strong> - текстова стрічка.</p>
+	<p class="instructions__text">Може містити будь які символи, які можна ввести з клавіатури.</p>
+	<p class="instructions__text"><strong>function</strong> - функція, виконання якої задається для реакції на подію.</p>
+	<p class="instructions__text">Якщо функція не задана, то видаляється поведінка для елементів buttons та symbols!</p>
+	<p class="instructions__text">
+		<a href="http://dmauro.github.io/Keypress/">Віртуальна клавіатура</a> та 
+		<a href="https://learn.javascript.ru/keyboard-events#keyboard-test-stand">Тестовий стенд</a> де ви можете знайти keyCode подій клавіатури.</p>
+</div>
+<footer>
+	<div class="footer-data">
+		<h6 class="footer-data__header">Name</h6>
+		<p class="footer-data__text">Roman Semenko</p>
+	</div>
+	<div class="footer-data">
+		<h6 class="footer-data__header">Cellphone</h6>
+		<p class="footer-data__text">+380977690071</p>
+	</div>
+	<div class="footer-data">
+		<h6 class="footer-data__header">E-mail</h6>
+		<p class="footer-data__text">shaggy_8@bigmir.net</p>
+	</div>
+	<div class="footer-data">
+		<h6 class="footer-data__header">Skype</h6>
+		<p class="footer-data__text">shaggy_8</p>
+	</div>
+</footer>
+</body>
+</html>
