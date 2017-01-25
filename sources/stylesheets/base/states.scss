@@ -1,0 +1,63 @@
+/*hidden block*/
+.is-hidden {
+  display: none !important;
+}
+
+/*margin for component*/
+.is-margin-right {
+  margin-right: 50px;
+}
+
+/*on create-advert page make margin for btn pink-empty small*/
+.is-advert-page {
+  margin: 60px 0 0;
+}
+
+/*text align center*/
+.text {
+  color: $main_text_color;
+  font-size: $font-size;
+
+  &-gray {
+    color: $special_text_color;
+  }
+  &-special {
+    color: $mark_text_color;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &.bold {
+    font-weight: bold;
+  }
+  &.upper {
+    text-transform: uppercase;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.right-side {
+  float: right;
+}
+
+.mobile-only {
+  display: none !important;
+
+  @include media-breakpoint-down(small-tablet) {
+    display: block !important;
+  }
+}
+.desktop-only {
+  display: block;
+
+  @include media-breakpoint-down(small-tablet) {
+    display: none !important;
+  }
+}
+

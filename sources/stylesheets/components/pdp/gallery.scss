@@ -1,0 +1,36 @@
+
+.image-box {
+  @include clearfix;
+  height: 700px;
+  overflow: hidden;
+
+
+  .thumbs {
+    display: block;
+
+    float: left;
+    li {
+      margin: 3px 2px;
+    }
+
+    .thumb-img {
+      display: block;
+      height: 92px;
+      margin-bottom: 20px;
+
+      &:hover {
+        border: 1px solid $grey_absolute;
+
+      }
+    }
+  }
+
+  .large-image {
+    float: right;
+    height: 700px;
+    width: 86%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}    

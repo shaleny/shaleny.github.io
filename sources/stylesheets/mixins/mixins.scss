@@ -1,0 +1,92 @@
+//Mixins
+@import "breakpoints";
+
+@mixin media-breakpoint($type) {
+  $breakpoints: (
+          'screen-wide':'(min-width: 1280px)',
+          'screen-medium':'(max-width: 1150px)',
+          'screen-normal':'(max-width: 1024px)',
+          'tablet': '(max-width: 768px)',
+          'small-tablet': '(max-width: 480px)',
+          'phone': '(min-width: 0)'
+  );
+  @media #{map-get($breakpoints, $type)} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+@mixin placeholder-focus {
+  &:focus::-webkit-input-placeholder { @content; }
+  &:focus::-moz-placeholder { @content; }
+  &:focus:-moz-placeholder { @content; }
+  &:focus:-ms-input-placeholder { @content; }
+}
+
+
+@mixin after() {
+  content: '';
+  position: absolute;
+  display: block;
+}
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin box-shadow ($h_length, $v_length, $blur, $spread, $color) {
+  box-shadow: $h_length $v_length $blur $spread $color;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size) {
+  @include size($size, $size);
+}
+@mixin img-responsive($display: block) {
+  display: $display;
+  max-width: 100%;
+  height: auto;
+}
+@mixin sprite-inline {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+}
+@mixin sprite-abs {
+    content: '';
+    position: absolute;
+    display: block;
+}
+@each $font-face in Avanti, Exodus {
+  @font-face {
+    font-family: $font-face; font-style: normal; font-weight: normal;
+    src: url('../../fonts/#{$font-face}.ttf') format('truetype');
+    src: url('../../fonts/#{$font-face}.otf'),
+  }
+}
+
+@function z($layer){
+  $layers: (
+          'base': 1,
+          'fixed': 30,
+          'dropdown': 60,
+          'popup': 90,
+          'modal': 100,
+          'hidden': -1
+  );
+  $z-index: map-get($layers, $layer);
+  @return $z-index;
+}

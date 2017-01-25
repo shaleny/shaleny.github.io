@@ -1,0 +1,82 @@
+.step-block {
+	position: relative;
+	margin: 50px 0 0 0;
+	padding: 2px 0 0 0;
+	height: 70px;
+	@include clearfix;
+}
+
+.step-block__big-line {
+	margin-top: 18px;
+	@include clearfix;
+}
+
+.step-block__line {
+	float: left;
+	width: 33.33%;
+	border: 1px solid $grey_regular;
+}
+
+.step-block__line--active {
+	border-color: $pinkish;
+}
+
+.step-block__label-box {
+	position: absolute;
+	top: 0;
+	width: 150px;
+	text-align: center;
+}
+
+.step-block__label-box--shipping{
+	left: calc(33.33% - 75px);
+}
+
+.step-block__label-box--payment{
+	left: calc(66.66% - 75px);
+}
+
+.step-block__label {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 2px solid $grey_regular;
+	background-color: $white_absolute;
+}
+
+.step-block__label--active {
+	border-color: $pinkish;
+}
+
+.step-block__label-text {
+	margin: 10px 0 0 0;
+	color: $grey_regular;
+	font-size: $font-size;
+}
+
+.step-block__label-text--active {
+	color: $pinkish;
+}
+
+.step-block__icon {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.step-block__icon--shipping {
+	@include sprite($i_pink_cart);
+}
+
+.step-block__icon--payment {
+	@include sprite($i_card-grey);
+}
+
+.step-block__icon--payment.step-block__icon--active {
+	@include sprite($i_card-pink);
+}

@@ -1,0 +1,40 @@
+.additional-menu {
+    margin-bottom: 40px;
+    &__item {
+        position: relative;
+        display: inline-block;
+        color: $additional_text_color;
+        font-size: $font-size;
+        text-transform: uppercase;
+        padding: 0 15px;
+
+        @include media-breakpoint-down(small-tablet) {
+            display: block;
+        }
+
+        &:after {
+            content: '|';
+            position: absolute;
+            right: 0;
+
+            @include media-breakpoint-down(small-tablet) {
+                content: none;
+            }
+        }
+        &:last-child {
+            &:after {
+                content: none;
+            }
+        }
+
+        &:hover,
+        &:active {
+            color: $white_absolute;
+            text-decoration: none;
+
+            &:after {
+                color: $additional_text_color;
+            }
+        }
+    }
+}

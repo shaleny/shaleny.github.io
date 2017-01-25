@@ -1,0 +1,16 @@
+.footer {
+    position: relative;
+    background: $footer_color;
+    text-align: center;
+    padding: 20px;
+
+    &__logo {
+        margin: 80px 0 40px 0;
+    }
+    &__coop {
+        color: $footer_text_color;
+    }
+    &__link {
+        color: $white_absolute;
+    }
+}

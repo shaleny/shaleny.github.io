@@ -1,0 +1,16 @@
+.brands {
+    font-size: 0;
+    background: $background_color;
+    padding: 35px 0;
+
+    &__item {
+        font-size: $font-size;
+        display: inline-block;
+        width: 16.666666%;
+        vertical-align: middle;
+        max-width: 100%;
+        padding: 0 40px;
+        box-sizing: border-box;
+
+    }
+}

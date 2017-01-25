@@ -1,0 +1,14 @@
+.brands-slider {
+  padding: 0 40px;
+
+  .slick-prev, .slick-next {
+    top: 50%;
+    margin-top: - $i_slider-arrow/2;
+  }
+  .slick-prev {
+    left: 10px;
+  }
+  .slick-next {
+    right: 10px;
+  }
+}

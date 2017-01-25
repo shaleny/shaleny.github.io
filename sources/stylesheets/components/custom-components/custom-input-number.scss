@@ -1,0 +1,68 @@
+.input-number {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  height: 54px;
+  margin-bottom: 40px;
+}
+
+.input-number input {
+  border: none;
+  display: inline-block;
+  height: 100%;
+  padding: 0 10px;
+  outline: none;
+  position: relative;
+  width: 68%;
+}
+
+.input-number-increment,
+.input-number-decrement {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  text-align: center;
+  right: 0;
+}
+
+.input-number-increment:hover:before {
+  border-bottom-color: $grey_absolute;
+}
+
+.input-number-decrement:hover:before {
+  border-top-color:$grey_absolute;
+;
+}
+
+.input-number-increment {
+  top: 48%;
+  margin-top: -13px;
+}
+
+.input-number-decrement {
+  top: 45%;
+}
+
+.input-number-increment:before,
+.input-number-decrement:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+
+.input-number-increment:before {
+  border-bottom: 3px solid $grey_absolute;
+}
+
+.input-number-decrement:before {
+  border-top: 3px solid $grey_absolute;;
+}

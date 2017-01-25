@@ -1,0 +1,73 @@
+.pagination {
+	@include clearfix;
+	@include media-breakpoint-down(small-tablet) {
+		margin-top: 50px;
+	}
+}
+
+.pagination {
+
+	.clear-wishlist-button {
+		line-height: 24px;
+	}
+	
+}
+
+.pagination__list {
+	float: right;
+	display: flex;
+	width: 77%;
+	flex-wrap: wrap;
+	align-content: space-between;
+	justify-content: space-between;
+	@include media-breakpoint-down(small-tablet) {
+		float: none;
+		margin-top: 15px;
+		width: 100%;
+	}
+}
+
+.pagination__item {
+	@include media-breakpoint-down(small-tablet) {
+		margin: 10px;
+	}
+}
+
+.pagination__button {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+}
+
+.pagination__button:before {
+	content: "";
+	display: inline-block;
+	margin: 8px 0;
+	@include sprite($i_link-arrow);
+}
+
+.pagination__button--prev:before {
+	transform: rotate(180deg);
+}
+
+.pagination__link {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	font-size: $font-size;
+	color: $black_absolute;
+	line-height: 24px;
+	text-align: center;
+}
+
+.pagination__link:hover {
+	background-color: $grey_regular;
+	color: $white_absolute;
+	text-decoration: none;
+}
+
+.pagination__link--active {
+	background-color: $black_absolute;
+	color: $white_absolute;
+}

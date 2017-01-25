@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cart Checkout step 1</title>
+	<link rel="stylesheet" href="../lib/dist/style.min.css">
+</head>
+<body>
+<!-- HEADER -->
+<header class="header cart-check-header">
+	<div class="g-main-wrapper header__wrap cart-check-header__wrap">
+		<div class="header__logo cart-check-header__logo">
+			<img src="../images/logo/logo.png" alt="BJORN">
+		</div>
+	</div>
+</header>
+<!-- HEADER END -->
+<div class="cart-checkout-page container">
+<!-- PROGRESS BLOCK START -->
+	<div class="step-block">
+		<div class="step-block__big-line">
+			<div class="step-block__line step-block__line--active"></div>
+			<div class="step-block__line"></div>
+			<div class="step-block__line"></div>
+		</div>
+		<div class="step-block__label-box step-block__label-box--shipping">
+			<div class="step-block__label step-block__label--active">
+				<span class="step-block__icon step-block__icon--shipping"></span>
+			</div>
+			<p class="step-block__label-text step-block__label-text--active">Shipping</p>
+		</div>
+		<div class="step-block__label-box step-block__label-box--payment">
+			<div class="step-block__label">
+				<span class="step-block__icon step-block__icon--payment"></span>
+			</div>
+			<p class="step-block__label-text">Review & Payments</p>
+		</div>
+	</div>
+<!-- PROGRESS BLOCK END -->
+<!-- MAIN CONTENT PAGE START -->
+	<div class="cart-check__main-content">
+<!-- INFO ABOUT BUYER START -->
+		<div class="buyer-data">
+<!-- ADDRESS START -->
+			<section class="buyer-data__address address">
+				<h2 class="address__header cart-check__header">SHIPPING ADDRESS</h2>
+				<form class="address__form">
+					<input type="text" placeholder="Recipient name" class="address__input">
+					<input type="text" placeholder="Phone number" class="address__input">
+					<input type="text" placeholder="E-mail" class="address__input">
+					<input type="text" placeholder="Company" class="address__input">
+					<div class="address__select-wrapper">
+						<select class="address__select">
+							<option value="Country" disabled selected>Country</option>
+							<option value="USA">USA</option>
+							<option value="Britain">Britain</option>
+							<option value="Germany">Germany</option>
+							<option value="Poland">Poland</option>
+						</select>
+					</div>
+					<div class="address__select-wrapper">
+						<select class="address__select">
+							<option value="State/Province" disabled selected>State/Province</option>
+							<option value="Montana">Montana</option>
+							<option value="Alaska">Alaska</option>
+							<option value="Verginia">Verginia</option>
+							<option value="Texas">Texas</option>
+						</select>
+					</div>
+					<textarea cols="30" rows="3" class="address__textarea" placeholder="Street address"></textarea>
+					<input type="text" placeholder="City" class="address__input">
+					<input type="text" placeholder="Zip/Postal code" class="address__input">
+				</form>
+			</section>
+<!-- ADDRESS END -->
+<!-- SHIPPING START -->
+			<section class="buyer-data__shipping shipping">
+				<h2 class="shipping__header cart-check__header">SHIPPING METHODS</h2>
+				<form class="shipping__form">
+					<input type="radio" id="shipping-method1" class="shipping__radio" name="shipping-method">
+					<label for="shipping-method1" class="shipping__label">Flat rate<span class="shipping__label--price">$5.00 (fixed)</span></label>
+					<input type="radio" id="shipping-method2" class="shipping__radio" name="shipping-method">
+					<label for="shipping-method2" class="shipping__label">Different method 1<span class="shipping__label--price">$15.00 (fixed)</span></label>
+					<input type="radio" id="shipping-method3" class="shipping__radio" name="shipping-method">
+					<label for="shipping-method3" class="shipping__label">Different method 2<span class="shipping__label--price">$35.00</span></label>
+				</form>
+			</section>
+<!-- SHIPPING START -->
+			<a href="#" class="buyer-data__button link-with-arrow">NEXT STEP</a>
+		</div>
+<!-- INFO ABOUT BUYER END -->
+<!-- INFO ABOUT ORDER START -->
+		<div class="order-data">
+			<h2 class="order-data__header cart-check__header">ORDER SUMMARY</h2>
+			<div class="order-data__order-block order">
+<!-- ORDER ITEM START -->
+				<div class="order__item">
+					<div class="order__image-frame"><img src="../images/static/product-4.jpg" alt="product-4" class="order__image"></div>
+					<div class="order__description-box">
+						<h4 class="order__product-header"><a href="#" class="order__product-header--link">Mango People T-shirt</a></h4>
+						<p class="order__product-code">SKU: <span class="order__product-code-value">11e25a-068</span></p>
+						<p class="order__product-characteristic order__product-characteristic--color">
+							<span class="order__product-characteristic-label order__product-characteristic-label--color">COLOR:</span>
+							<span class="order__product-characteristic-value order__product-characteristic-value--color" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">SIZE:</span>
+							<span class="order__product-characteristic-value">XL</span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">QUANTITY:</span>
+							<span class="order__product-characteristic-value">5</span>
+						</p>
+					</div>
+					<p class="order__product-price">$65.50</p>
+				</div>
+<!-- ORDER ITEM END -->
+<!-- ORDER ITEM START -->
+				<div class="order__item">
+					<div class="order__image-frame"><img src="../images/static/product-2.jpg" alt="product-4" class="order__image"></div>
+					<div class="order__description-box">
+						<h4 class="order__product-header"><a href="#" class="order__product-header--link">Mango People T-shirt</a></h4>
+						<p class="order__product-code">SKU: <span class="order__product-code-value">11e25a-068</span></p>
+						<p class="order__product-characteristic order__product-characteristic--color">
+							<span class="order__product-characteristic-label order__product-characteristic-label--color">COLOR:</span>
+							<span class="order__product-characteristic-value order__product-characteristic-value--color" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">SIZE:</span>
+							<span class="order__product-characteristic-value">XL</span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">QUANTITY:</span>
+							<span class="order__product-characteristic-value">5</span>
+						</p>
+					</div>
+					<p class="order__product-price">$65.50</p>
+				</div>
+<!-- ORDER ITEM END -->
+<!-- ORDER ITEM START -->
+				<div class="order__item">
+					<div class="order__image-frame"><img src="../images/static/product-1.jpg" alt="product-4" class="order__image"></div>
+					<div class="order__description-box">
+						<h4 class="order__product-header"><a href="#" class="order__product-header--link">Mango People T-shirt</a></h4>
+						<p class="order__product-code">SKU: <span class="order__product-code-value">11e25a-068</span></p>
+						<p class="order__product-characteristic order__product-characteristic--color">
+							<span class="order__product-characteristic-label order__product-characteristic-label--color">COLOR:</span>
+							<span class="order__product-characteristic-value order__product-characteristic-value--color" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">SIZE:</span>
+							<span class="order__product-characteristic-value">XL</span>
+						</p>
+						<p class="order__product-characteristic">
+							<span class="order__product-characteristic-label">QUANTITY:</span>
+							<span class="order__product-characteristic-value">5</span>
+						</p>
+					</div>
+					<p class="order__product-price">$65.50</p>
+				</div>
+<!-- ORDER ITEM END -->
+				<div class="order__handler"><span></span></div>
+			</div>
+<!-- ORDER COUNTING START -->
+			<div class="order-data__counting counting">
+				<p class="counting__item">
+					<span class="counting__item--label">BAG TOTAL</span>
+					<span class="counting__item--value">$196.50</span>
+				</p>
+				<p class="counting__item">
+					<span class="counting__item--label">SHIPPING</span>
+					<span class="counting__item--value">FREE</span>
+				</p>
+				<p class="counting__item">
+					<span class="counting__item--label">TAX</span>
+					<span class="counting__item--value">$34.25</span>
+				</p>
+			</div>
+			<p class="order-data__total-price">
+				<span class="order-data__total-price--label">ORDER TOTAL</span>
+				<span class="order-data__total-price--value">$230.75</span>
+			</p>
+<!-- ORDER COUNTING END -->
+		</div>
+<!-- INFO ABOUT ORDER END -->
+	</div>
+<!-- MAIN CONTENT PAGE END -->
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+	<p class="footer__coop">
+		Copyrights © 2016 by <a href="#" class="footer__link">BJORN</a>. All Rights Reserved.
+	</p>
+</footer>
+<!-- FOOTER END -->
+<!-- JS LINKS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../js/jquery.event.swipe.js"></script>
+	<script src="../js/libs/slick.min.js"></script>
+	<script src="../js/custom/jquery-search.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/cart-checkout-page.js"></script>
+<!-- JS LINKS END -->
+</body>
+</html>

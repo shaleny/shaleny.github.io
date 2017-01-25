@@ -1,0 +1,18 @@
+.btn {
+  background: $grey_absolute;
+  color: $white_absolute;
+  font-size: $font-size;
+  text-transform: uppercase;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  padding: 15px 40px;
+  display: inline-block;
+  font-family: $font-regular;
+  font-weight: bold;
+  cursor: pointer;
+
+  @include media-breakpoint-down(small-tablet) {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,56 @@
+@import '../theme/theme';
+@import '../mixins/mixins';
+@import '../sprites';
+
+@import "custom-components/custom-select";
+@import "custom-components/custom-input-number";
+@import "custom-components/tabs";
+@import "custom-components/rating";
+
+@import "sliders/main-slider";
+@import "sliders/brands-slider";
+
+@import "product/categories";
+@import "product/price";
+@import "product/product-top";
+
+@import "newsletter/newsletter";
+@import "brands/brands";
+@import "advantages/advantages";
+
+@import 'breadcrumbs/breadcrumbs';
+@import 'displaying-indicator/displaying-indicator';
+@import 'list-handlers/list-handlers';
+@import 'pagination/pagination';
+
+@import 'category-page/category-page';
+@import 'catalog/catalog';
+@import 'catalog/catalog-tile-view';
+@import 'catalog/stars';
+
+@import 'sidebar/sidebar';
+@import 'sidebar/sidebar-block';
+
+@import 'cart/cart';
+@import 'cart-checkout/cart-checkout';
+@import 'cart-checkout/step-block';
+@import 'cart-checkout/shipping';
+@import 'cart-checkout/payment';
+@import 'cart-checkout/order-data';
+@import 'multiple-shipping-page/multiple-shipping-page';
+
+@import 'brands-list/brands-list';
+@import 'brand-page/brand-page';
+
+@import 'cms-page/cms-page';
+
+@import 'wishlist/wishlist';
+
+@import 'comparison-page/comparison-page';
+
+@import 'pdp/gallery';
+@import 'pdp/product-view';
+@import 'pdp/review';
+
+@import 'buttons/btn';
+

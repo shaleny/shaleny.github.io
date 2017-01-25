@@ -1,0 +1,41 @@
+.newsletter {
+    background: $background_color;
+    vertical-align: middle;
+    padding: 40px 0;
+    font-size: 0;
+    color: $grey_absolute;
+
+    &__item {
+        width: 50%;
+        font-size: 16px;
+        line-height: 2;
+        display: inline-block;
+        vertical-align: middle;
+        box-sizing: border-box;
+
+        @include media-breakpoint-down(small-tablet) {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+        }
+    }
+    &__email {
+        width: 60%;
+        padding: 10px 40px;
+        background: url("../../images/email-icon.png") 10px center no-repeat;
+    }
+    &__button {
+        font-size: 20px;
+        text-transform: uppercase;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-weight: bold;
+        font-family: $font-regular;
+        cursor: pointer;
+    }
+    &__title {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,22 @@
+@import '../mixins/mixins';
+@import 'reset';
+@import '../theme/theme';
+
+html,
+body {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  color: $body_color;
+
+  font-size: $font-size;
+  font-family: $font-regular;
+
+  -webkit-font-smoothing: antialiased;
+}
+div {
+  box-sizing: border-box;
+}
+@import 'states';

@@ -1,0 +1,250 @@
+.catalog {
+	padding: 58px 0 0 0;
+	@include clearfix;
+	@include media-breakpoint-down(small-tablet) {
+		padding: 0;
+	}
+}
+
+.product {
+	margin: 0 0 100px 0;
+	@include clearfix;
+}
+
+.product:last-child {
+	@include media-breakpoint-down(small-tablet) {
+		margin-bottom: 0;
+	}
+}
+
+.product__image-frame {
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 280px;
+	overflow: hidden;
+	text-align: center;
+	/*background-color: $grey_regular;*/
+	@include media-breakpoint-down(small-tablet) {
+		height: auto;
+	}
+}
+
+.product__delete-button {
+	top: 16px;
+	right: 16px;
+	width: 16px;
+	height: 16px;
+	z-index: 10;
+}
+
+.product__delete-button:before,
+.product__delete-button:after {
+	height: 22px;
+	background-color: $black_absolute;
+}
+
+.product__image {
+	max-width: 100%;
+	max-height: 100%;
+	transition: all 600ms;
+}
+
+.product__image-frame:hover .product__image {
+	filter: brightness(1.2);
+}
+
+.product__emerge-block {
+	position: absolute;
+	left: -100%;
+	bottom: 0;
+	width: calc(100% + 50px);
+	transition: all 600ms;
+}
+
+.product__comment-block {
+	float: left;
+	width: calc(100% - 50px);
+	height: 60px;
+	background-color: $white-grey;
+	color: $black_absolute;
+}
+
+.product__comment-button {
+	float: left;
+	width: 50px;
+	height: 60px;
+	border: none;
+	background: none;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+}
+
+.product__comment-button--show-block {
+	border-left: 3px solid $white-grey;
+}
+
+.product__comment-button--hide-block {
+	width: 35px;
+}
+
+.product__comment-button--hide-block:before {
+	display: block;
+	content: "\f104";
+	font-family: 'FontAwesome';
+	font-weight: bold;
+}
+
+.product__comment-button--edit-comment {
+	width: 42px;
+}
+
+.product__comment-button-icon {
+	display: inline-block;
+}
+
+.product__comment-button-icon--edit {
+	@include sprite($i_pencil);
+}
+
+.product__comment-button-icon--comment {
+	@include sprite($i_comment);
+}
+
+.product__comment-text {
+	float: left;
+	width: calc(100% - 77px);
+	font-size: $font-size;
+	font-style: italic;
+	line-height: 30px;
+}
+
+.product__comment-input {
+	float: left;
+	display: none;
+	width: calc(100% - 77px);
+	border: none;
+	background-color: $white-grey;
+	font-size: $font-size;
+	font-style: italic;
+	line-height: 30px;
+	outline: none;
+	resize: none;
+}
+
+.product__text-box {
+	float: left;
+	padding: 0 0 0 30px;
+	width: 70%;
+	@include media-breakpoint-down(small-tablet) {
+		padding-left: 15px;
+	}
+}
+
+.product__header-box {
+	position: relative;
+	margin: 35px 0 0 0;
+	@include media-breakpoint-down(small-tablet) {
+		margin: 0;
+	}
+}
+
+.product__header {
+	display: inline-block;
+}
+
+.product__header-link {
+	color: $black_absolute;
+	font-family: $font-special;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.product__price {
+	margin: 13px 0 0 0;
+}
+
+.product__price--old {
+	color: $grey-middle;
+	font-size: $font-size-xs;
+	text-decoration: line-through;
+}
+
+.product__price--actual {
+	color: $black_absolute;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.product__rating {
+	display: inline-block;
+	vertical-align: middle;
+	@include media-breakpoint-down(small-tablet) {
+		margin-top: 13px;
+	}
+}
+
+.product__rating-star {
+	margin-right: 10px;
+}
+
+.product__reviews {
+	color: $grey_regular;
+	font-size: $font-size-xs;
+	line-height: 22px;
+}
+
+.product__description {
+	margin: 28px 0 0 0;
+	color: $black_almost;
+	font-size: $font-size-xs;
+	line-height: 2;
+}
+
+.product__links-block {
+	margin: 58px 0 0 0;
+	@include clearfix;
+	@include media-breakpoint-down(small-tablet) {
+		margin-top: 20px;
+	}
+}
+
+.product__button {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.product__button:active {
+	top: 2px;
+}
+
+.product__button--fav {
+	margin: 0 31px;
+	@include sprite($i_heart);
+	@include media-breakpoint-down(small-tablet) {
+		margin: 0 15px;
+	}
+}
+
+.product__button--fav:hover {
+	@include sprite($i_heart-active);
+}
+
+.product__button--fav-active {
+	@include sprite($i_heart-active);
+}
+
+.product__button--compare {
+	margin: 3px 0;
+	@include sprite($i_compare);
+}
+
+.product__button--compare:hover {
+	@include sprite($i_compare-active);
+}
+
+.product__button--compare-active {
+	@include sprite($i_compare-active);
+}

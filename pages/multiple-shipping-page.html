@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>MultipleShipping</title>
+	<link rel="stylesheet" href="../lib/dist/style.min.css">
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header class="header">
+		<div class="g-main-wrapper header__wrap">
+
+			<nav class="menu" role='navigation'>
+				<ul>
+					<li class="menu__item"><a href="#">Women</a>
+						<!-- HEADER submenu-->
+						<div class="submenu">
+							<div class="submenu__item">
+								<h4 class="submenu__title">Women</h4>
+								<nav class="submenu__list">
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Sweaters/Knits</a>
+									<a href="#" class="submenu__link">Leggings/Pants</a>
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Swimwear/Underwear</a>
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Leggings/Pants</a>
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Dresses</a>
+								</nav>
+							</div>
+							<div class="submenu__item">
+								<h4 class="submenu__title">Women</h4>
+								<nav class="submenu__list">
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Sweaters/Knits</a>
+									<a href="#" class="submenu__link">Leggings/Pants</a>
+									<a href="#" class="submenu__link">Dresses</a>
+								</nav>
+
+								<h4 class="submenu__title">Women</h4>
+								<nav class="submenu__list">
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Sweaters/Knits</a>
+									<a href="#" class="submenu__link">Leggings/Pants</a>
+								</nav>
+							</div>
+							<div class="submenu__item">
+								<h4 class="submenu__title">Women</h4>
+								<nav class="submenu__list">
+									<a href="#" class="submenu__link">Dresses</a>
+									<a href="#" class="submenu__link">Sweaters/Knits</a>
+									<a href="#" class="submenu__link">Leggings/Pants</a>
+									<a href="#" class="submenu__link">Dresses</a>
+								</nav>
+
+								<div class="submenu__banner">
+									<img src="../images/static/banner.png">
+								</div>
+							</div>
+						</div>
+						<!-- HEADER submenu END-->
+
+					</li>
+
+					<li class="menu__item"><a href="#">Man</a></li>
+
+					<li class="menu__item"><a href="#">Junior</a></li>
+
+					<li class="menu__item"><a href="#">Deals</a></li>
+				</ul>
+			</nav>
+			<div class="header__logo">
+				<img src="../images/logo/logo.png">
+			</div>
+			<div class="header__profile">
+
+				<div class="settings">
+					<div class="custom-select">
+						<select>
+                        <option>UA</option>
+                        <option>US</option>
+                    </select>
+					</div>
+					<div class="custom-select">
+
+						<select>
+                        <option>UAH</option>
+                        <option>USD</option>
+                    </select>
+					</div>
+				</div>
+				<div class="header__search js-search-button">
+					<div class="search js-search">
+						<form>
+							<input class="search__input search__input--l" type="text" placeholder="Product name">
+
+
+							<div class="search__addition js-search-addition">
+								<input class="search__input search__input--l" type="text" placeholder="SKU">
+								<span class="search__text">Price</span>
+								<input class="search__input search__input--s" type="text" placeholder="From">//
+								<input class="search__input search__input--s" type="text" placeholder="To">
+								<button class="search__button">Search</button>
+							</div>
+						</form>
+						<span class="search__options">
+						<span class="js-search-more more">+ More options</span>
+						<span class="js-search-close close">— Close options</span>
+						</span>
+					</div>
+				</div>
+				<div class="header__login">
+					<a href="#">Login</a>
+				</div>
+				<div class="header__cart">Cart</div>
+			</div>
+		</div>
+
+	</header>
+	<!-- HEADER END -->
+	<!-- MULTIPLE SHIPPING PAGE START -->
+	<div class="multiple-shipping-page cart-page">
+		<h1 class="cart-page__header">
+		SHIP TO MULTIPLE ADDRESSES
+	</h1>
+		<!-- PURCHASE TABLE START -->
+		<table class="purchase">
+			<thead class="purchase__header">
+				<tr>
+					<th>Image</th>
+					<th>Product name</th>
+					<th>Qty</th>
+					<th colspan="2">Send to</th>
+				</tr>
+			</thead>
+			<tbody class="purchase__list">
+				<!-- ROW OF PRODUCT START -->
+				<tr class="purchase__item">
+					<td>
+						<img src="../images/static/product-2.jpg" alt="product-4" class="purchase__image">
+					</td>
+					<td>
+						<h4 class="purchase__product-header">Mango People T-shirt</h4>
+						<p class="purchase__product-code">SKU: <span class="purchase__product-code-value">11e25a-068</span></p>
+						<p class="purchase__product-color">
+							<span class="purchase__product-color-label">COLOR:</span>
+							<span class="purchase__product-color-value" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="purchase__product-size">
+							<span class="purchase__product-size-label">SIZE:</span>
+							<span class="purchase__product-size-value">XL</span>
+						</p>
+					</td>
+					<td>
+						<form class="purchase__product-quantity-wrapper">
+							<div class="purchase__product-quantity-handlers">
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--increase"></button>
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--decrease"></button>
+							</div>
+							<input class="purchase__product-quantity" type="number" name="quantity" min="0">
+						</form>
+					</td>
+					<td>
+						<div class="purchase__select-wrapper">
+							<select class="purchase__select">
+								<option value="USA">Lee Crawford
+								Brooklyn, 5th Street, New York 11215, United States
+								+291-75-8612899</option>
+								<option value="Britain">Britain</option>
+								<option value="Germany">Germany</option>
+								<option value="Poland">Poland</option>
+							</select>
+						</div>
+					</td>
+					<td class="purchase__buttons">
+						<button class="purchase__delete-button delete-button"></button>
+					</td>
+				</tr>
+				<!-- ROW OF PRODUCT END -->
+				<!-- ROW OF PRODUCT START -->
+				<tr class="purchase__item">
+					<td>
+						<img src="../images/static/product-4.jpg" alt="product-4" class="purchase__image">
+					</td>
+					<td>
+						<h4 class="purchase__product-header">Mango People T-shirt</h4>
+						<p class="purchase__product-code">SKU: <span class="purchase__product-code-value">11e25a-068</span></p>
+						<p class="purchase__product-color">
+							<span class="purchase__product-color-label">COLOR:</span>
+							<span class="purchase__product-color-value" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="purchase__product-size">
+							<span class="purchase__product-size-label">SIZE:</span>
+							<span class="purchase__product-size-value">XL</span>
+						</p>
+					</td>
+					<td>
+						<form class="purchase__product-quantity-wrapper">
+							<div class="purchase__product-quantity-handlers">
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--increase"></button>
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--decrease"></button>
+							</div>
+							<input class="purchase__product-quantity" type="number" name="quantity" min="0">
+						</form>
+					</td>
+					<td>
+						<div class="purchase__select-wrapper">
+							<select class="purchase__select">
+								<option value="USA">Lee Crawford
+								Brooklyn, 5th Street, New York 11215, United States
+								+291-75-8612899</option>
+								<option value="Britain">Britain</option>
+								<option value="Germany">Germany</option>
+								<option value="Poland">Poland</option>
+							</select>
+						</div>
+					</td>
+					<td class="purchase__buttons">
+						<button class="purchase__delete-button delete-button"></button>
+					</td>
+				</tr>
+				<!-- ROW OF PRODUCT END -->
+				<!-- ROW OF PRODUCT START -->
+				<tr class="purchase__item">
+					<td>
+						<img src="../images/static/product-6.jpg" alt="product-4" class="purchase__image">
+					</td>
+					<td>
+						<h4 class="purchase__product-header">Mango People T-shirt</h4>
+						<p class="purchase__product-code">SKU: <span class="purchase__product-code-value">11e25a-068</span></p>
+						<p class="purchase__product-color">
+							<span class="purchase__product-color-label">COLOR:</span>
+							<span class="purchase__product-color-value" style="background-color: #b3a4ab"></span>
+						</p>
+						<p class="purchase__product-size">
+							<span class="purchase__product-size-label">SIZE:</span>
+							<span class="purchase__product-size-value">XL</span>
+						</p>
+					</td>
+					<td>
+						<form class="purchase__product-quantity-wrapper">
+							<div class="purchase__product-quantity-handlers">
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--increase"></button>
+								<button class="purchase__product-quantity-handler purchase__product-quantity-handler--decrease"></button>
+							</div>
+							<input class="purchase__product-quantity" type="number" name="quantity" min="0">
+						</form>
+					</td>
+					<td>
+						<div class="purchase__select-wrapper">
+								<select class="purchase__select">
+								<option value="USA">Lee Crawford
+								Brooklyn, 5th Street, New York 11215, United States
+								+291-75-8612899</option>
+								<option value="Britain">Britain</option>
+								<option value="Germany">Germany</option>
+								<option value="Poland">Poland</option>
+								</select>
+						</div>
+					</td>
+					<td class="purchase__buttons">
+						<button class="purchase__delete-button delete-button"></button>
+					</td>
+				</tr>
+				<!-- ROW OF PRODUCT END -->
+			</tbody>
+			<tfoot class="purchase__handlers">
+				<tr class="purchase__links">
+					<td colspan="2">
+						<a href="#" class="purchase__continue-shopping">BACK TO SHOPPING CART</a>
+					</td>
+					<td colspan="3">
+						<a href="#" class="purchase__go-to-checkout">GO TO SHIPPING INFORMATION</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<!-- PURCHASE TABLE END -->
+	</div>
+	<!-- MULTIPLE SHIPPING PAGE END -->
+
+	<!-- FOOTER -->
+
+	<footer class="footer">
+		<img src="../images/logo/logo-big.png" class="footer__logo">
+		<nav class="additional-menu">
+			<a href="#" class="additional-menu__item">Customer Service</a>
+			<a href="#" class="additional-menu__item">Privacy and Cookie Policy</a>
+			<a href="#" class="additional-menu__item">Orders and Returns</a>
+			<a href="#" class="additional-menu__item">About US</a>
+			<a href="#" class="additional-menu__item">Contact</a>
+		</nav>
+
+		<div class="socials">
+			<a href="#" class="socials__item">
+				<img src="../images/twitter.png">
+			</a>
+			<a href="#" class="socials__item">
+				<img src="../images/gg+.png">
+			</a>
+			<a href="#" class="socials__item">
+				<img src="../images/pinterest.png">
+			</a>
+			<a href="#" class="socials__item">
+				<img src="../images/rss.png">
+			</a>
+			<a href="#" class="socials__item">
+				<img src="../images/fb.png">
+			</a>
+			<a href="#" class="socials__item">
+				<img src="../images/eath.png">
+			</a>
+
+		</div>
+		<p class="footer__coop">
+			Copyrights © 2016 by <a href="#" class="footer__link">BJORN</a>. All Rights Reserved.
+		</p>
+
+	</footer>
+	<!-- FOOTER END -->
+	<!-- JS LINKS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="../js/libs/slick.min.js"></script>
+	<script src="../js/custom/jquery-search.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/cart-page.js"></script>
+	<!-- JS LINKS END -->
+</body>
+
+</html>

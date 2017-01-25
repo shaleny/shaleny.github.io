@@ -1,0 +1,33 @@
+{
+  "name": "nomakler-ui",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexpassss/nomakler-ui.git"
+  },
+  "keywords": [
+    "nomakler"
+  ],
+  "author": "alexpassss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexpassss/nomakler-ui/issues"
+  },
+  "homepage": "https://github.com/alexpassss/nomakler-ui#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-myth": "^1.1.0",
+    "grunt-sass": "^1.2.0",
+    "grunt-spritesmith": "^6.3.1"
+  }
+}

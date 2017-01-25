@@ -1,0 +1,30 @@
+.product__stars {
+	border: none;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	line-height: 1;
+}
+
+.product__stars > input {
+	display: none;
+}
+
+.product__stars > label:before { 
+	content: "\f005";
+	display: inline-block;
+	margin: 3px;
+	font-family: 'FontAwesome';
+	font-size: $font-size-xs;
+}
+
+.product__stars > label { 
+	float: right;
+	color: $grey_regular;
+}
+
+.product__stars > input:checked ~ label, /* show colored star when clicked */
+.product__stars:not(:checked) > label:hover, /* hover current star */
+.product__stars:not(:checked) > label:hover ~ label { /* hover previous stars in list */
+	color: $black_absolute;
+}

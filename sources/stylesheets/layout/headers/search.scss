@@ -1,0 +1,65 @@
+.search {
+  display: none;
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  background: $white_absolute;
+  padding: 0 30px 30px 30px;
+  width: 280px;
+  z-index: -1;
+  margin-right: -20px;
+  margin-top: -10px;
+
+  &__addition {
+    display: none;
+  }
+  &.active {
+    display: block;
+  }
+
+  &__input {
+    padding: 10px 30px 10px 10px;
+    line-height: 1.5;
+    z-index: 2;
+
+    &--l {
+      width: 100%;
+    }
+    &--s {
+      width: 36%;
+
+    }
+
+    }
+  &__text {
+    text-transform: none;
+    margin-right: 4px;
+    font-style: italic;
+  }
+  &__options {
+    text-transform: none;
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+
+    .close {
+      display: none;
+    }
+    a {
+      text-transform: none;
+    }
+  }
+  &__button {
+    width: 100%;
+    margin-top: 30px;
+
+    }
+  @include media-breakpoint-down(small-tablet) {
+    width: 100%;
+    margin-top: 80px;
+    left: 0;
+
+  }
+
+}

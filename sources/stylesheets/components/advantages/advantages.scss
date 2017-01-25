@@ -1,0 +1,50 @@
+.advantages {
+    font-size: 0;
+
+    &__item {
+        width: 23%;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 15px 20px;
+        border: 1px solid $grey_absolute;
+        line-height: 2;
+        color: $grey_absolute;
+        margin-right: 2.6666%;
+        height: 86px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        @include media-breakpoint-down(small-tablet) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+    &__title {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    &__text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    &__wrap {
+        width: 82%;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    &__img {
+        width: 18%;
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+
+}

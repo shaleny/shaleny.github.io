@@ -1,0 +1,339 @@
+.buyer-data__payment {
+	@include clearfix;
+}
+
+.payment__form {
+	padding: 30px 0 50px;
+	border-bottom: 1px solid $white-grey;
+}
+
+.payment__radio {
+	display: none;
+}
+
+.payment__label {
+	position: relative;
+	display: block;
+	margin-bottom: 30px;
+	padding-left: 36px;
+	height: 16px;
+	color: $black_absolute;
+	font-size: $font-size;
+	line-height: 16px;
+}
+
+.payment__label--price {
+	float: right;
+}
+
+.payment__label:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include sprite($i_radio-empty);
+}
+
+.payment__radio:checked + .payment__label:before {
+	@include sprite($i_radio-checked);
+}
+
+.payment__inner-box {
+	padding-left: 35px;
+	@include media-breakpoint-down(small-tablet) {
+		padding: 0;
+	}
+}
+
+.payment__same-data-checkbox {
+	display: none;
+}
+
+.payment__same-data-label {
+	position: relative;
+	padding-left: 30px;
+	height: 16px;
+	color: $black_absolute;
+	font-size: $font-size;
+	line-height: 16px;
+	@include media-breakpoint-down(small-tablet) {
+		display: inline-block;
+		width: 80%;
+	}
+}
+
+.payment__same-data-label:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include sprite($i_checkbox-empty);
+}
+
+.payment__same-data-checkbox:checked + .payment__same-data-label:before {
+	@include sprite($i_checkbox-checked);
+}
+
+.payment__user-data {
+	margin-top: 16px;
+	padding-left: 34px;
+	color: $black_absolute;
+	font-size: $font-size-xs;
+	font-style: italic;
+	line-height: 30px;
+	white-space: pre-line;
+}
+
+.payment__card-number-wrapper {
+	position: relative;
+	margin-top: 17px;
+	width: 350px;
+	@include media-breakpoint-down(small-tablet) {
+		width: auto;
+	}
+}
+
+.payment__card-number {
+	padding-left: 9px;
+	width: 285px;
+	height: 60px;
+	letter-spacing: 9px;
+	line-height: 60px;
+}
+
+.payment__card-number::-webkit-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	font-weight: normal;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-number::-moz-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-number:-ms-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-number-label {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	@include media-breakpoint-down(small-tablet) {
+		position: static;
+		top: 0;
+		display: block;
+		margin: 9px;
+		transform: none;
+	}
+}
+
+.payment__card-number-label--visa {
+	@include sprite($i_visa);
+}
+
+.payment__card-number-label--master-card {
+	@include sprite($i_master-card);
+}
+
+.payment__card-number-label--maestro {
+	@include sprite($i_maestro);
+}
+
+.payment__card-number-label--pay-pal {
+	@include sprite($i_pay-pal);
+}
+
+.payment__card-number-label--discover {
+	@include sprite($i_discover);
+}
+
+.payment__card-number-label--jcb {
+	@include sprite($i_jcb);
+}
+
+.payment__card-verification-wrapper {
+	width: 285px;
+	@include clearfix;
+}
+
+.payment__card-verification-label {
+	height: 60px;
+	color: $black_absolute;
+	font-size: $font-size;
+	font-style: italic;
+	line-height: 60px;
+}
+
+.payment__card-verification-input {
+	float: right;
+	width: 65px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
+
+.payment__card-verification-input::-webkit-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	font-weight: normal;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-verification-input::-moz-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-verification-input:-ms-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-date-wrapper {
+	width: 285px;
+	line-height: 60px;
+	color: $black_absolute;
+	font-size: $font-size;
+	@include clearfix;
+}
+
+.payment__card-date-label {
+	height: 60px;
+	font-style: italic;
+	line-height: 60px;
+}
+
+.payment__card-date-input-wrapper {
+	float: right;
+}
+
+.payment__card-date-input {
+	width: 65px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
+
+.payment__card-date-input::-webkit-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	font-weight: normal;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-date-input::-moz-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-date-input:-ms-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__card-date-slash {
+	margin: 0 10px;
+}
+
+.payment__gift-card-box {
+	padding: 54px 0 50px;
+	border-bottom: 1px solid $white-grey;
+	@include media-breakpoint-down(small-tablet) {
+		padding: 25px 5px;
+	}
+}
+
+.payment__gift-card {
+	width: 70%;
+	height: 55px;
+	padding-left: 20px;
+	line-height: 55px;
+	@include media-breakpoint-down(small-tablet) {
+		width: 88%;
+	}
+}
+
+.payment__gift-card::-webkit-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	font-weight: normal;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__gift-card::-moz-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__gift-card:-ms-input-placeholder {
+	color: $black_absolute;
+	font-family: Avanti, sans-serif;
+	font-size: $font-size;
+	letter-spacing: normal;
+	opacity: 1;
+}
+
+.payment__gift-card-button {
+	position: relative;
+	top: 13px;
+	margin-left: 13px;
+	height: 35px;
+	border: none;
+	background: none;
+	color: $black_absolute;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 35px;
+	cursor: pointer;
+	outline: none;
+}
+
+.buyer-data__place-order {
+	display: block;
+	margin-top: 100px;
+	width: 255px;
+	height: 50px;
+	background-color: $black_absolute;
+	color: $white_absolute;
+	font-size: $font-size;
+	font-weight: bold;
+	line-height: 50px;
+	text-align: center;
+	@include media-breakpoint-down(small-tablet) {
+		margin: 50px auto;
+	}
+}

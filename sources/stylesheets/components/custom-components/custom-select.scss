@@ -1,0 +1,18 @@
+.custom-select {
+    display: inline-block;
+    select {
+        border: none;
+        outline: none;
+        text-transform: uppercase;
+        font-size: $font-size;
+        color: $grey_absolute;
+        background: transparent;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    &:after {
+        @include sprite-inline;
+        @include sprite($i_arrow);
+    }
+}

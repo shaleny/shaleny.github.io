@@ -1,0 +1,113 @@
+.list-handlers {
+	@include clearfix;
+	@include media-breakpoint-down(small-tablet) {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: $white_absolute;
+		z-index: 10;
+	}
+}
+
+.displaying-indicator {
+	line-height: 24px;
+	@include media-breakpoint-down(small-tablet) {
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.list-handlers__handler {
+	float: right;
+	/*width: 73%;*/
+	color: $black_almost;
+	font-size: $font-size;
+	@include clearfix;
+	@include media-breakpoint-down(small-tablet) {
+		float: none;
+		margin: 10px 0;
+		width: 100%;
+	}
+}
+
+.list-handlers__handler-block {
+	float: right;
+	position: relative;
+	margin: 0 30px;
+	border: none;
+	@include media-breakpoint-down(small-tablet) {
+		margin: 0;
+		padding: 0 4%;
+		width: 33.33%;
+		text-align: center;
+	}
+}
+
+.list-handlers__handler-block:first-child {
+	margin-right: 0;
+}
+
+.list-handlers__handler-block:last-child {
+	margin-left: 0;
+	@include media-breakpoint-down(small-tablet) {
+		float: left;
+	}
+}
+
+.list-handlers__label {
+	display: inline-block;
+	margin-right: 28px;
+}
+
+.list-handlers__handler-block .list-handlers__select {
+	padding: 3px 3px 3px 0;
+	font-style: italic;
+	text-transform: none;
+	@include media-breakpoint-down(small-tablet) {
+		padding-right: 13px;
+	}
+}
+
+.list-handlers__buttons-block {
+	margin-top: 3px;
+}
+
+.list-handlers__buttons-block:after {
+	content: "";
+}
+
+.list-handlers__button {
+	display: inline-block;
+	margin-left: 6px;
+	width: 20px;
+	height: 17px;
+	border: none;
+	background: none;
+}
+
+.list-handlers__button--horizontal span {
+	display: block;
+	width: 100%;
+	height: 8px;
+	background: black;
+}
+
+.list-handlers__button--horizontal span:first-child {
+	height: 9px;
+	border-bottom: 1px solid white;
+}
+
+.list-handlers__button--vertical span {
+	float: left;
+	width: 6px;
+	height: 100%;
+	background: black;
+}
+
+.list-handlers__button--vertical span:nth-child(2) {
+	width: 8px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+}

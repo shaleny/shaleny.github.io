@@ -1,0 +1,108 @@
+.header {
+  text-transform: uppercase;
+  color: $grey_absolute;
+  font-size: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 12;
+  background: $white_absolute;
+
+  &__wrap {
+    position: relative;
+    padding: 28px 0;
+
+  }
+
+  &__logo {
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+
+    @include media-breakpoint-down(small-tablet) {
+      width: 40%;
+    }
+
+    img {
+      margin: 0 auto;
+    }
+  }
+  &__profile {
+    width: 45%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    font-size: $font-size;
+
+    .settings {
+      margin-bottom: 10px;
+
+    }
+    .custom-select {
+      margin-left: 20px;
+
+      .menu & {
+        margin-left: 5px;
+        line-height: 3;
+
+        select {
+          font-size: 20px;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(small-tablet) {
+      width: 30%;
+    }
+
+    .menu & {
+      text-align: left;
+      width: 100%;
+    }
+
+  }
+  &__login,
+  &__cart,
+  &__search {
+    margin-left: 20px;
+    display: inline-block;
+
+    &:before {
+      @include sprite-inline;
+    }
+    .menu & {
+      margin-left: 5px;
+      line-height: 3;
+      font-size: 20px;
+    }
+  }
+  &__search {
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+
+    &:before {
+      @include sprite($i_search);
+    }
+    @include media-breakpoint-down(small-tablet) {
+      position: static;
+    }
+  }
+  &__login {
+    &:before {
+      @include sprite($i_profile);
+    }
+    &:after {
+      @include sprite-inline;
+      @include sprite($i_arrow);
+      margin-left: 5px;
+    }
+  }
+  &__cart {
+    &:before {
+      @include sprite($i_cart);
+    }
+  }
+
+}

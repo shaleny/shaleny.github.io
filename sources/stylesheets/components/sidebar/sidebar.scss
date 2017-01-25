@@ -1,0 +1,77 @@
+.sidebar {
+	float: left;
+	width: 23%;
+	@include media-breakpoint-down(small-tablet) {
+		float: none;
+		width: 100%;
+	}
+}
+
+.sidebar__list {
+	margin-bottom: 100px;
+	color: $black_absolute;
+	font-size: $font-size;
+}
+
+.sidebar__item {
+	position: relative;
+	border-bottom: 1px solid $grey_regular;
+}
+
+.sidebar__main-link {
+	display: block;
+	padding: 25px 10px 24px;
+}
+
+.sidebar__main-link:after {
+	position: absolute;
+	top: 25px;
+	right: 10px;
+	content: "\25BE";
+}
+
+.sidebar__main-link--current {
+	background-color: $grey_ultra;
+	color: $pinkish;
+}
+
+.sidebar__main-link--current:before {
+	display: inline-block;
+	margin-right: 10px;
+	content: ">"
+}
+
+.sidebar__main-link--active:after {
+	content: "\25B4";
+}
+
+.sidebar__sub-list {
+	display: none;
+	padding: 0 20px 15px;
+	font-size: $font-size-xs;
+}
+
+.sidebar__sub-item {
+	padding: 10px 0;
+}
+
+.sidebar__sub-item:first-child {
+	padding-top: 0;
+}
+
+.sidebar__sub-item--active {
+	padding-left: 20px;
+}
+
+.sidebar__link {
+	color: $black_absolute;
+}
+
+.sidebar__link--active {
+	color: $pinkish;
+}
+
+.sidebar__sidebar-block {
+	margin-top: 50px;
+	width: 255px;
+}

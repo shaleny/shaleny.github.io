@@ -1,0 +1,66 @@
+//Default values
+$font-size: 14px;
+$font-size-xl: 32px;
+$font-size-l: 24px;
+$font-size-m: 18px;
+$font-size-s-plus: 14px;
+$font-size-s: 14px;
+$font-size-xs: 12px;
+
+
+$font-regular: Avanti, sans-serif;
+$font-special: Exodus, sans-serif;
+$box-shadow: 0px 7px 6px -3px rgba(0,0,0,0.27);
+
+//Site width
+$site-width-max: 1920px;
+$site-width: 1124px;
+$site-width-tablet: 860px;
+$site-width-mobile: 580px;
+
+
+// Color palette
+
+//Grey
+$grey_ultra: #f9f9f9;
+$grey_regular: #aaaaaa;
+$grey_absolute: #000000;
+$grey-middle:  #999999;
+$grey-dark:  #101010;
+$grey-medium: #333333;
+$grey_transparent: rgba(0, 0, 0, 0.5);
+
+$body_color: $grey_regular;
+
+//White
+$white_absolute: #fff;
+$white-grey: #e5e5e5;
+
+$black_absolute: #000000;
+$black_almost: #010101;
+$pinkish: #db646e;
+
+$green_regular: #99cc00;
+
+//Color state
+$main_text_color: $grey_absolute;
+$special_text_color: $grey_regular;
+$additional_text_color: $grey-middle;
+$mark_text_color: $green_regular;
+$background_color: $grey_ultra;
+$footer_color: $grey-dark;
+$footer_text_color: $grey-medium;
+
+
+//Blocks values
+$header-height: 102px;
+$messages-height: 80px;
+$profile-wrapper-l: 1280px;
+
+
+%transition {
+  transition: all 150ms linear;
+}
+%transitionSlow {
+  transition: all .3s linear;
+}

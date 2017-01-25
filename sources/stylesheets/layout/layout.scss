@@ -1,0 +1,72 @@
+@import '../theme/theme';
+@import '../mixins/mixins';
+@import '../sprites';
+@import 'headers/headers';
+@import 'headers/menu';
+@import 'headers/submenu';
+@import 'headers/search';
+@import 'footer/footer';
+@import 'footer/additional-menu';
+@import 'footer/socials';
+
+.g-main-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: $site-width;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(desktop) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.g-margin-bottom {
+    margin-bottom: 60px;
+}
+a {
+    text-transform: uppercase;
+    font-size: $font-size;
+    color: $grey_absolute;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &.special-link {
+        &:after {
+            @include sprite-inline;
+            @include sprite($i_link-arrow);
+            margin-left: 10px;
+        }
+    }
+    @include media-breakpoint-down(small-tablet) {
+        font-size: 20px;
+    }
+}
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $grey_absolute;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+}
+input, textarea {
+    border-width: 0 0 1px 0;
+    border-color: $grey_absolute;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    box-sizing: border-box;
+
+    @include placeholder{
+        color: $grey_absolute;
+    }
+
+    @include media-breakpoint-down(small-tablet) {
+        font-size: 20px;
+    }
+}
